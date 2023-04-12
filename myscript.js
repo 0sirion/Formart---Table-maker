@@ -5,13 +5,20 @@ let main = document.getElementById('mainContent');
 
 let h1 = document.createElement('h');
 h1.innerText = 'Creatore di Tabelle!';
-h1.style.display = 'flex';
-h1.style.justifyContent = 'center';
+h1.style.color =  '#7EE77E'         //'rgb(255, 195, 0)';
+      h1.style.fontWeight = 'bold';
+      h1.style.fontSize = '70px';
+      h1.style.fontFamily = "'Candy', sansSerif"
+      h1.style.display = 'flex';
+      h1.style.justifyContent = 'center'
 
 
 
 let div1 = document.createElement('div');
+div1.className = 'fieldsContainer';
+
 let div2 = document.createElement('div');
+div2.className = 'tableContainer';
 
 
 
@@ -67,11 +74,14 @@ btnMakeTable.disabled= true;
 
 let hideTable = document.createElement('input');
 hideTable.setAttribute('type', 'button');
-hideTable.setAttribute('value', 'Hide Table');
+hideTable.setAttribute('value', 'Show/Hide Table');
+hideTable.setAttribute('onclick', 'hideTableFn()')
 
 let tableSample = document.createElement('table');
 tableSample.id = "tableId"
-tableSample.setAttribute('hidden', 'true')
+
+
+
 
 
 
@@ -79,15 +89,17 @@ function makeTableFn(n, m) {
   n = inputRighe.value;
   m = inputColonne.value;
   tableSample.innerHTML = "";
-  tableSample.style.border = 'solid';
-  document.getElementById("tableId").hidden = false;
+  // tableSample.style.border = 'solid';
+  // document.getElementById("tableId").style.display = 'none';
+  
+  
 
   if (n != '' && m != '') {
     
     for (i = 1; i <= m; i++) {
       th1 = document.createElement('th');
       tableSample.appendChild(th1)
-      th1.innerHTML = `header ${i}`;
+      th1.innerHTML = `Column ${i}`;
       th1.style.backgroundColor = "rgba(0, 255, 64, 0.159)";
     }
 
@@ -99,13 +111,33 @@ function makeTableFn(n, m) {
         for (j = 1; j <= m; j++) {
           let col = document.createElement('td');
           tableSample.appendChild(col);
-          col.innerHTML = `"cell in row ${i}, column ${j}"`
+          col.innerHTML = `cell in row ${i}, column ${j}`
         }
     }
      
   }
-  
+  div2.appendChild(tableSample)
+  div2.appendChild(hideTable)
+
+
 }
+
+function hideTableFn() {
+  var x = document.getElementById("tableId");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+// function hideTableFn() {
+  
+//   document.getElementById("tableId").hidden = true;
+  
+// }
+
 
 function appendMain(element) {
   return main.appendChild(element);
@@ -133,7 +165,6 @@ function pageLoading() {
   div1.appendChild(label2);
   div1.appendChild(inputColonne);
   div1.appendChild(btnMakeTable)
-  div2.appendChild(tableSample)
   
 
 }

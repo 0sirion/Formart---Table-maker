@@ -1,9 +1,31 @@
 
+body {
 
+  background-image: url('https://wallpapercave.com/wp/wp7213366.jpg');
+}
 .inputField {
   
   display: grid;
   /*   */
   background-color: rgba(0, 255, 64, 0.159);
+
+}
+
+table, th, td {
+  border: 1px solid black;
+  align-items: center;
+}
+
+.tableContainer {
+  display: grid;
+  justify-content: center;
+  margin: 30px;
+
+}
+
+.fieldsContainer {
+  display: grid;
+  justify-content: center;
+
 
 }
